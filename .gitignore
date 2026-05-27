@@ -17,6 +17,14 @@
 **/prometheus_data/*
 !**/prometheus_data/.gitkeep
 
+# RabbitMQ runtime state
+**/rabbitmq-data/*
+!**/rabbitmq-data/.gitkeep
+
+# .NET / C# build artifacts
+**/bin/
+**/obj/
+
 # Logs / temp
 *.log
 tmp/

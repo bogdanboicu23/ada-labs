@@ -1,0 +1,57 @@
+services:
+  lab2_producer: &lab2
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+    volumes:
+        - .:/home/student/lab2
+    ports:
+      - "22"
+    depends_on:
+      - "rabbitmq"
+    networks:
+      - main
+
+  lab2_consumer:
+    <<: *lab2
+  
+  cs_computer:
+    stdin_open: true
+    tty: true
+    build:
+      context: ./CsComputer   # points to the subfolder with its own Dockerfile
+    depends_on:
+      - "rabbitmq"
+    networks:
+      - main                  
+
+  python_computer:
+    image: python:3.11-slim
+    working_dir: /home/student/lab2
+    volumes:
+      - .:/home/student/lab2
+    command: >
+      sh -c "pip install pika --quiet && python python_computer.py"
+    depends_on:
+      - rabbitmq
+    networks:
+      - main
+  rabbitmq:
+    # default user for localhost:5672 is guest:guest
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ./rabbitmq-data/data/:/var/lib/rabbitmq/
+        - ./rabbitmq-data/log/:/var/log/rabbitmq:rw
+    environment:
+      - "RABBITMQ_DEFAULT_USER=guest"
+      - "RABBITMQ_DEFAULT_PASS=guest"
+    networks:
+      - main
+
+networks:
+  main:
