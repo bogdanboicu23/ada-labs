@@ -25,6 +25,13 @@
 **/bin/
 **/obj/
 
+# Lab1 compiled C++ binaries (rebuild via compile.sh)
+lab1/default/lab1
+lab1/openmp/lab1_openmp
+lab1/openmpi/lab1_openmpi
+*.o
+*.exe
+
 # Logs / temp
 *.log
 tmp/
