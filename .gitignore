@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Grafana runtime state (auto-generated, not source)
+**/grafana_data/*
+!**/grafana_data/.gitkeep
+
+# Prometheus runtime state
+**/prometheus_data/*
+!**/prometheus_data/.gitkeep
+
+# Logs / temp
+*.log
+tmp/
