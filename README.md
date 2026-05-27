@@ -35,4 +35,4 @@ Apoi:
 - Prometheus → http://localhost:9090
 - Node-exporter → http://localhost:9100/metrics
 
-Dashboard-ul `ADA Lab 3 — Monitoring Sistem & DocumentStorage API` se află în [lab3/grafana_dashboards/ada-lab3-dashboard.json](lab3/grafana_dashboards/ada-lab3-dashboard.json) — importă-l manual prin **Dashboards → New → Import** sau lasă-l pentru auto-provisioning (vezi `lab3/README` pentru detalii).
+
